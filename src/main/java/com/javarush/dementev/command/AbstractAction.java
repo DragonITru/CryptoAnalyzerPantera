@@ -32,7 +32,7 @@ public abstract class AbstractAction implements Action{
         }
     }
 
-    public final Path generatePath(String filename) {
+    public static Path generatePath(String filename) {
         String TXT_FOLDER = System.getProperty("user.dir") +
                 File.separator +
                 "text" +
