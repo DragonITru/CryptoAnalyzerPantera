@@ -1,15 +1,12 @@
 package com.javarush.dementev;
-import com.javarush.dementev.command.Decode;
-import java.io.IOException;
-
+import java.util.Scanner;
 
 
 public class Runner {
-    public static void main(String[] args) throws IOException {
-        Decode decode = new Decode();
-        String urlIN = "src\\main\\java\\com\\javarush\\dementev\\testIN.txt";
-        String urlOUT = "src\\main\\java\\com\\javarush\\dementev\\testOUT.txt";
-        decode.copyWithKey(urlIN,urlOUT,-1);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        UserInput userInput = new UserInput(scanner);
+        Controller controller = new Controller(userInput.getCommandLine());
 
         }
     }

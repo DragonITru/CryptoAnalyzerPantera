@@ -1,8 +1,8 @@
 package com.javarush.dementev.command;
 import com.javarush.dementev.Constant;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -10,8 +10,8 @@ import java.nio.file.Path;
 public abstract class AbstractAction implements Action{
     public void copyWithKey(String inTXT, String outTXT, int key) {
         int indexChar;
-        Path pathIN = Path.of(inTXT);
-        Path pathOut = Path.of(outTXT);
+        Path pathIN = generatePath(inTXT);
+        Path pathOut = generatePath(outTXT);
 
         try (BufferedReader reader =  Files.newBufferedReader(pathIN);
              BufferedWriter writer =  Files.newBufferedWriter(pathOut)) {
@@ -30,6 +30,17 @@ public abstract class AbstractAction implements Action{
         } catch (Exception e) {
 // заглушка
         }
+    }
+
+    public final Path generatePath(String filename) {
+        String TXT_FOLDER = System.getProperty("user.dir") +
+                File.separator +
+                "text" +
+                File.separator;
+        Path path = Path.of(filename);
+        return path.isAbsolute()
+                ? path
+                : Path.of(TXT_FOLDER + filename);
     }
 
 
