@@ -6,6 +6,6 @@ public class Encode extends AbstractAction{
         String encryptedFilename = parameters[0];
         String decryptedFilename = parameters[1];
         int key = Integer.parseInt(parameters[2]);
-        copyWithKey(encryptedFilename, decryptedFilename, 1 * key);
+        copyWithKey(encryptedFilename, decryptedFilename, key);
     }
 }
