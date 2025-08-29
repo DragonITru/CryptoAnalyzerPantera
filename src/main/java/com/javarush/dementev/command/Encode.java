@@ -6,6 +6,6 @@ public class Encode extends AbstractAction{
         String inFileName = parameters[0];
         String outFileName = parameters[1];
         int key = Integer.parseInt(parameters[2]);
-        copyWithKey(inFileName, outFileName, key);
+        runAction(inFileName, outFileName, key);
     }
 }

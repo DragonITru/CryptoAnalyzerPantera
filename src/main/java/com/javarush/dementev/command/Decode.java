@@ -7,6 +7,6 @@ public class Decode extends AbstractAction {
         String inFileName = parameters[0];
         String outFileName = parameters[1];
         int key = Integer.parseInt(parameters[2]);
-        copyWithKey(inFileName, outFileName, -1 * key);
+        runAction(inFileName, outFileName, -1 * key);
     }
 }

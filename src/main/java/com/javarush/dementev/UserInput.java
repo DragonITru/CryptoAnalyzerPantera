@@ -23,7 +23,8 @@ public class UserInput {
                 Что вы хотите сделать ?
                 1. Зашифровать файл - введите ENCODE \n
                 2. Расшифровать файл - введите DECODE \n
-                3. Взломать с помощью словаря - введите BRUTEFORCE
+                3. Взломать с помощью словаря - введите BRUTEFORCE \n
+                4. Взломать с помощью анализа - введите ANALYZE
                 """);
 
         Set<String> validCommands = new HashSet<>();
@@ -54,6 +55,11 @@ public class UserInput {
                     }
                     case BRUTEFORCE: {
                         nameCommand = "BRUTEFORCE";
+                        System.out.println("Выбран режим - BruteForce.");
+                        break;
+                    }
+                    case ANALYZE: {
+                        nameCommand = "ANALYZE";
                         System.out.println("Выбран режим - BruteForce.");
                         break;
                     }

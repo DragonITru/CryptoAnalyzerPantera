@@ -8,27 +8,27 @@ import java.nio.file.Path;
 
 
 public abstract class AbstractAction implements Action{
-    public void copyWithKey(String inTXT, String outTXT, int key) {
+    public void runAction(String inTXT, String outTXT, int key) {
         int indexChar;
         Path pathIN = generatePath(inTXT);
         Path pathOut = generatePath(outTXT);
 
         try (BufferedReader reader =  Files.newBufferedReader(pathIN);
              BufferedWriter writer =  Files.newBufferedWriter(pathOut)) {
-            int lengthAlphabet = Constant.INDEXALPHABET.length;
+            int lengthAlphabet = Constant.indexAlphabet.length;
             while ((indexChar = reader.read()) > -1) {
                 char character = (char) indexChar;
-                if (Constant.CHARSMAP.containsKey(character)) {
-                    int index = (int) Constant.CHARSMAP.get(character);
+                if (Constant.charsMap.containsKey(character)) {
+                    int index = (int) Constant.charsMap.get(character);
                     index = (index + key + Math.abs(key) * lengthAlphabet) % lengthAlphabet;
-                    writer.write(Constant.INDEXALPHABET[index]);
+                    writer.write(Constant.indexAlphabet[index]);
                 } else if (character == '\n') {
                     writer.write(character);
                 }
             }
 
         } catch (Exception e) {
-// заглушка
+            throw new IllegalArgumentException("Фаил источник не найден");
         }
     }
 
